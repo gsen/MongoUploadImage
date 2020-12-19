@@ -1,13 +1,13 @@
 const MongoClient = require('mongodb').MongoClient;
-const URI = 'mongodb+srv://gaurav:Yomg6G4AThmo7FGs@cluster0.kaejb.mongodb.net/products_test?retryWrites=true&w=majority';
-
+const dotenv = require('dotenv');
+dotenv.config();
 const createProduct = async (req, res, next) => {
     const newProduct = {
         name: req.body.name,
         price: req.body.price
     }
 
-    const client = new MongoClient(URI);
+    const client = new MongoClient(process.env.URI);
     try {
 
         await client.connect();
